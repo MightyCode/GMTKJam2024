@@ -6,6 +6,7 @@ public class Collectible : MonoBehaviour
 {
     public GameObject type;
 
+    // Un peu d'émentage au joueur quand il s'approche
     // Start is called before the first frame update
     void Start()
     {
