@@ -180,7 +180,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("Keyboard&Mouse rotation");
             Vector3 mouseScreenPosition = Input.mousePosition;
 
-            Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.transform.position.y));
+            Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Mathf.Abs(Camera.transform.position.y)));
 
             Vector3 direction = (mouseWorldPosition - transform.position).normalized;
             direction.y = 0; 

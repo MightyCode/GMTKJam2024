@@ -28,6 +28,8 @@ public class Collectible : MonoBehaviour
 
     void Start()
     {
+        player = PlayerManager.Instance.gameObject;
+
         disabledCollectibles = new ArrayList();
 
         initialPosition = transform.position;
