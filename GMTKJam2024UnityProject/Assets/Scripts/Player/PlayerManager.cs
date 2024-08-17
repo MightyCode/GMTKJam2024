@@ -45,6 +45,28 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
 
+
+    float resource;
+
+    public float Resource
+    {
+        get { return resource; }
+    }
+
+    public float RemoveResource(float amount)
+    {
+        resource -= amount;
+
+        return resource;
+    }
+
+    public float AddResource(float amount)
+    {
+        resource += amount;
+
+        return resource;
+    }
+
     // Todo : 
     // gestion de la "vie" / stun ?
     // gestion de l'attaque

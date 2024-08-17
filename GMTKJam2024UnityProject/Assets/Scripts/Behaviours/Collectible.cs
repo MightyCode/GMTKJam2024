@@ -8,30 +8,37 @@ public class Collectible : MonoBehaviour
     private GameObject player;
 
     [SerializeField]
-    private float scale = 1.0f;
-
-    [SerializeField]
     private float distanceDetect = 1.0f;
 
     [SerializeField]
     private float value = 1.0f;
 
 
-    // Un peu d'émentage au joueur quand il s'approche
-    // Start is called before the first frame update
     void Start()
     {
      
     }
 
+
+    // Un peu d'émentage au joueur quand il s'approche
+
     // Update is called once per frame
     void Update()
     {
-        // if player is close enough magnet the collectible
-
+        // if player is close enough magnet the collectible, slow magnet speed
         if (Vector3.Distance(player.transform.position, transform.position) < distanceDetect)
         {
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f);
+            float force = 0.005f;
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, force);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            player.GetComponent<PlayerManager>().AddResource(value);
+            Destroy(gameObject);
         }
     }
 }
