@@ -45,6 +45,9 @@ public class TheBeast : MonoBehaviour
         transform.position =
             new Vector3(initalXRef - transform.localScale.x / 2,
             transform.localScale.y, transform.position.z);
+
+
+        foodText.text = currentFood + "/" + FoodGoal;
     }
 
 
@@ -115,16 +118,12 @@ public class TheBeast : MonoBehaviour
             SetFood(currentFood + player.Resource);
             player.RemoveResource(player.Resource);
 
-            
-
 
             if (currentFood >= FoodGoal)
             {
                // TODO Réussite jeu
             } else
             {
-
-                foodText.text = currentFood + "/" + FoodGoal;
                     
                 // Reset certain thing in worlds
                 Collectible.ResetAll();

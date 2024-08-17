@@ -42,7 +42,7 @@ public class Upgrade : MonoBehaviour
         
     }
 
-    void ApplyUpgrade(string upgrade)
+    public void ApplyUpgrade(string upgrade)
     {
         switch (upgrade) {
             case "Speed 1":
