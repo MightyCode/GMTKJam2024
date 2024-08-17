@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+
+    private static ArrayList disabledCollectibles;
+
     [SerializeField]
     private GameObject player;
 
@@ -13,10 +16,21 @@ public class Collectible : MonoBehaviour
     [SerializeField]
     private float value = 1.0f;
 
+    private Vector3 initialPosition;
+
+    private void Awake()
+    {
+        if (disabledCollectibles == null)
+        {
+            disabledCollectibles = new ArrayList();
+        }
+    }
 
     void Start()
     {
-     
+        disabledCollectibles = new ArrayList();
+
+        initialPosition = transform.position;
     }
 
 
@@ -38,7 +52,19 @@ public class Collectible : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             player.GetComponentInChildren<PlayerManager>().AddResource(value);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            disabledCollectibles.Add(gameObject);
         }
+    }
+
+    public static void ResetAll()
+    {
+        foreach (GameObject collectible in disabledCollectibles)
+        {
+            collectible.SetActive(true);
+            collectible.transform.position = collectible.GetComponent<Collectible>().initialPosition;
+        }
+
+        disabledCollectibles.Clear();
     }
 }

@@ -15,7 +15,7 @@ public class TheBeast : MonoBehaviour
     private Timer feedTimer;
 
     [SerializeField]
-    float waitingForFeeding = 20;
+    public float waitingForFeeding = 20;
     [SerializeField]
     bool IsWaiting = true;
 
@@ -24,6 +24,8 @@ public class TheBeast : MonoBehaviour
     public float FoodGoal;
     private float currentFood;
 
+    public float CurrentFood => currentFood;
+
     [FormerlySerializedAs("collectSuccesfull")]
     [SerializeField]
     private UnityEvent m_onEnter = new UnityEvent();
@@ -31,6 +33,19 @@ public class TheBeast : MonoBehaviour
     private Vector3 initialScale;
 
     private float initalXRef;
+
+    public void SetFood(float food)
+    {
+        currentFood = food;
+
+        float scale = Mathf.Log(12 + currentFood, player.BaseLog);
+        scale = Mathf.Min(scale, player.MaxScale);
+
+        transform.localScale = new Vector3(initialScale.x * scale, 1, initialScale.z * scale);
+        transform.position =
+            new Vector3(initalXRef - transform.localScale.x / 2,
+            transform.localScale.y, transform.position.z);
+    }
 
 
     // Start is called before the first frame update
@@ -97,19 +112,10 @@ public class TheBeast : MonoBehaviour
             // TODO MORT
         } else
         {
-            currentFood += player.Resource;
+            SetFood(currentFood + player.Resource);
             player.RemoveResource(player.Resource);
 
-            if (currentFood != 0)
-            {
-                float scale = Mathf.Log(currentFood, player.BaseLog);
-                scale = Mathf.Min(scale, player.MaxScale);
-
-                transform.localScale = new Vector3(initialScale.x * scale, 1, initialScale.z * scale);
-                transform.position =
-                    new Vector3(initalXRef - transform.localScale.x / 2,
-                    transform.localScale.y, transform.position.z);
-            }
+            
 
 
             if (currentFood >= FoodGoal)
@@ -119,7 +125,10 @@ public class TheBeast : MonoBehaviour
             {
 
                 foodText.text = currentFood + "/" + FoodGoal;
-                
+                    
+                // Reset certain thing in worlds
+                Collectible.ResetAll();
+
                 m_onEnter.Invoke();
             }
         }

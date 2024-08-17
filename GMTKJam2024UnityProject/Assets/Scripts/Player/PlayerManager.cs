@@ -7,9 +7,11 @@ public class PlayerManager : MonoBehaviour
 {
     public enum State
     {
-        Blocked,
         Moving,
+        Blocked
     }
+
+    private State state;
 
     public static PlayerManager Instance;
 
@@ -45,11 +47,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float valueDescale;
 
     [Header("Dashing Data")]
-    private bool canDash = true;
+    public bool CanDash = false;
+    public bool CanAttack = false;
+
     private bool isDashing = false;
-    [SerializeField] float dashSpeed = 25f;
-    [SerializeField] float dashDuration = 1f;
-    [SerializeField] float dashCooldown = 1f;
+    [SerializeField] public float DashSpeed = 25f;
+    [SerializeField] public float DashDuration = 1f;
+    [SerializeField] public float DashCooldown = 1f;
 
 
     [SerializeField] private float turnSmoothTime = 0.1f;
@@ -121,8 +125,9 @@ public class PlayerManager : MonoBehaviour
             Camera.transform.rotation = Quaternion.Euler(90, 0, 0);
         }
 
-        canDash = true;
         isDashing = false;
+
+        state = State.Moving;
     }
 
     private void OnEnable()
@@ -166,9 +171,8 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdatePlayerMovement()
     {
-
-
-
+        if (state == State.Blocked)
+            return;
 
         //Player Rotation
         if (IsKeyboardAndMouse)
@@ -231,16 +235,18 @@ public class PlayerManager : MonoBehaviour
 
     private void DashAction(InputAction.CallbackContext context)
     {
-        Debug.Log("Dash Detected");
-        if (canDash)
-        {
-            StartCoroutine(Dash());
-        }
+        if (!CanDash)
+            return; 
 
+        Debug.Log("Dash Detected");
+        StartCoroutine(Dash());
     }
 
     private void AttackAction(InputAction.CallbackContext context)
     {
+        if (!CanAttack)
+            return;
+
         Debug.Log("AttackAction Detected");
         foreach (DamagingElement weapon in playerWeapons)
         {   if(weapon != null)
@@ -252,19 +258,19 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        canDash = false;
+        CanDash = false;
         isDashing = true;
 
         float elapsedTime = 0f;
 
-        while (elapsedTime < dashDuration)
+        while (elapsedTime < DashDuration)
         {
             Vector2 movement = mouvementAction.ReadValue<Vector2>();
             moveInput.x = movement.x;
             moveInput.z = movement.y;
             moveInput = moveInput.normalized;
 
-            characterController.Move(moveInput * dashSpeed * Time.deltaTime);
+            characterController.Move(moveInput * DashSpeed * Time.deltaTime);
 
             elapsedTime += Time.deltaTime;
 
@@ -273,11 +279,9 @@ public class PlayerManager : MonoBehaviour
 
         isDashing = false;
 
-        yield return new WaitForSeconds(dashCooldown);
+        yield return new WaitForSeconds(DashCooldown);
 
-        canDash = true;
+        CanDash = true;
 
     }
-
-
 }

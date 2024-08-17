@@ -10,7 +10,7 @@ public class PlayerInputManager : MonoBehaviour
     public float HorizontalInput { get { return horizontalInput; } }
 
     private float verticalInput;
-
+    
     public float VerticalInput { get { return verticalInput; } }
 
     private bool wantDash;
