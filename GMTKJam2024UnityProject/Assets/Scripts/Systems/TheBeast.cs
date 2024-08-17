@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class TheBeast : MonoBehaviour
 {
     [SerializeField] private GameManager manager;
-    [SerializeField] private PlayerManager player;
+    private PlayerManager player;
 
     [SerializeField]
     private TMP_Text timerText;
@@ -36,6 +36,8 @@ public class TheBeast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player  = PlayerManager.Instance;
+
         feedTimer = new Timer();
         feedTimer.Start(waitingForFeeding);
 

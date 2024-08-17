@@ -32,8 +32,10 @@ public class PlayerDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        Debug.Log("++Player entered " + other.gameObject.name);
+        if (other.gameObject.name == "PlayerBody")
         {
+            Debug.Log("++Trigger");
             savedEntityAfterEnter = other.gameObject;
             onEnter.Invoke();
         }

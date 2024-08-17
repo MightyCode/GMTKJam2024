@@ -101,15 +101,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-
-        if (Instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
 
         playerInputActions = new PlayerInputAction();
 
