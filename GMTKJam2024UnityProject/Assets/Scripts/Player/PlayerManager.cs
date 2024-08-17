@@ -33,7 +33,29 @@ public class PlayerManager : MonoBehaviour
 
     public float Scale = 1;
 
-    public float Resource;
+
+    float resource;
+
+    public float Resource
+    {
+        get { return resource; }
+    }
+
+    public float RemoveResource(float amount)
+    {
+        resource -= amount;
+
+        return resource;
+    }
+
+    public float AddResource(float amount)
+    {
+        resource += amount;
+
+        return resource;
+    }
+
+
 
     // Todo : 
     // gestion de la "vie" / stun ?
