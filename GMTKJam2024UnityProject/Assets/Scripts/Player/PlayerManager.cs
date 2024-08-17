@@ -29,10 +29,11 @@ public class PlayerManager : MonoBehaviour
 
     public float DistanceToCamera = 20;
 
-
     public float Friction;
 
     public float Scale = 1;
+
+    public float Resource;
 
     // Todo : 
     // gestion de la "vie" / stun ?
