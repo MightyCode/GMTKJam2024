@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class PlayerInputManager : MonoBehaviour
     private bool wantDash;
 
     public bool WantDash { get { return wantDash; } }
+
+    public float speed = 6f;
+
+    [SerializeField] private Rigidbody rigidbody;
+
+    [SerializeField] private CharacterController characterController;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +44,28 @@ public class PlayerInputManager : MonoBehaviour
             wantDash = false;
         }*/
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        //horizontalInput = Input.GetAxis("Horizontal");
+        //verticalInput = Input.GetAxis("Vertical");
+    }
 
 
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        Debug.Log("On move for player");
+        var value = context.ReadValue<Vector2>();
+        Vector3 direction = rigidbody.velocity;
+        direction.x = speed * value.x;
+        direction.z = speed * value.y;
+        Debug.Log("Velocity = " + direction);
+        characterController.Move(direction * Time.deltaTime);
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        var value = context.ReadValue<Vector2>();
     }
 }

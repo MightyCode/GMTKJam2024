@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
             {
                 timerText.text = string.Format("{0:D2}:{1:D2}:{2:D2}:{3:D3}", 
                     time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
+            }
 
                 // color from blue to red
                 timerText.color = Color.Lerp(Color.red, Color.green, remainingTime / HarvestTime);
