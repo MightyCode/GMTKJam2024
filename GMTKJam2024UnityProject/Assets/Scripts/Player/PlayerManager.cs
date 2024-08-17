@@ -34,9 +34,9 @@ public class PlayerManager : MonoBehaviour
 
     public float Scale = 1;
 
-    private float MaxScale = 3;
+    public float MaxScale = 3;
 
-    private float BaseLog = 12;
+    public float BaseLog = 12;
 
     [SerializeField] private float valueDescale;
 

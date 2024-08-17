@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         resourceCounterText.text = player.GetComponent<PlayerManager>().Resource.ToString();
     }
 }

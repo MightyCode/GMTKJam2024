@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +28,9 @@ public class TheBeast : MonoBehaviour
     [SerializeField]
     private UnityEvent m_onEnter = new UnityEvent();
 
+    private Vector3 initialScale;
+    private float initalXRef;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,10 @@ public class TheBeast : MonoBehaviour
         feedTimer.Start(waitingForFeeding);
 
         foodText.text = currentFood + "/" + FoodGoal;
+
+        initialScale = transform.localScale;
+
+        initalXRef = transform.position.x + transform.localScale.x / 2;
     }
 
     // Update is called once per frame
@@ -90,11 +95,22 @@ public class TheBeast : MonoBehaviour
         {
             currentFood += player.Resource;
             player.RemoveResource(player.Resource);
-            Debug.Log("J'ia bien mangé" + currentFood);
+
+            if (currentFood != 0)
+            {
+                float scale = Mathf.Log(currentFood, player.BaseLog);
+                scale = Mathf.Min(scale, player.MaxScale);
+
+                transform.localScale = new Vector3(initialScale.x * scale, 1, initialScale.z * scale);
+                transform.position =
+                    new Vector3(initalXRef - transform.localScale.x / 2,
+                    transform.localScale.y, transform.position.z);
+            }
+
 
             if (currentFood >= FoodGoal)
             {
-               // Réussite jeu
+               // TODO Réussite jeu
             } else
             {
 
