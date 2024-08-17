@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class TheBeast : MonoBehaviour
 {
+    public static TheBeast Instance;
+
     [SerializeField] private GameManager manager;
     private PlayerManager player;
 
@@ -40,15 +42,26 @@ public class TheBeast : MonoBehaviour
     {
         currentFood = food;
 
+        foodText.text = currentFood+ "/" + FoodGoal;
+
         float scale = Mathf.Log(player.BaseLog + currentFood, player.BaseLog);
         scale = Mathf.Min(scale, player.MaxScale);
 
         transform.localScale = new Vector3(initialScale.x * scale, initialScale.y * scale, initialScale.z * scale);
         /*transform.position =
-            new Vector3(initalXRef - transform.localScale.x / 2,
-            transform.localScale.y, transform.position.z);*/
+            new Vector3(initalXRef - transform.localScale.x / 2 - scale * 0.95f,
+            transform.localScale.y - scale * 1.45f, transform.position.z);*/
+
+        transform.position =
+            new Vector3(initalXRef - transform.localScale.x / 2 - scale * 0.95f,
+            transform.localScale.y - scale * 1.45f, transform.position.z);
     }
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +71,8 @@ public class TheBeast : MonoBehaviour
         feedTimer = new Timer();
         feedTimer.Start(WaitingForFeeding);
 
+
+        // Write a text with 1 digit precision for currentFood + "/" + FoodGoal
         foodText.text = currentFood + "/" + FoodGoal;
 
         initialScale = transform.localScale;
@@ -103,7 +118,7 @@ public class TheBeast : MonoBehaviour
 
     public void ResetHarverst()
     {
-        feedTimer.ResetStart();
+        feedTimer.Start(WaitingForFeeding);
         IsWaiting = true;
     }
 

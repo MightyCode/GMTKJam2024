@@ -6,7 +6,7 @@ using UnityEngine;
 public class Buyable : MonoBehaviour
 {
     public float Price;
-    [SerializeField] private TheBeast theBeast;
+    private TheBeast theBeast;
     [SerializeField] private Upgrade upgradeManager;
 
     private TMP_Text shopText;
@@ -20,6 +20,8 @@ public class Buyable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theBeast = TheBeast.Instance;
+
         baseMaterial = GetComponent<MeshRenderer>().material;
         shopText = GetComponentInChildren<TMP_Text>();
 

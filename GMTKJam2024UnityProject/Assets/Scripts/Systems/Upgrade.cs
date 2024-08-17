@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
-    [SerializeField] TheBeast theBeast;
+    private TheBeast theBeast;
 
     private PlayerManager playerManager;
 
@@ -13,6 +13,8 @@ public class Upgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theBeast = TheBeast.Instance;
+
         playerManager = PlayerManager.Instance;
 
         // Apply upgrade to player
@@ -59,11 +61,11 @@ public class Upgrade : MonoBehaviour
                 // Dash speed * 1.5
                 break;
             case "Time Limit 1":
-                theBeast.WaitingForFeeding *= 3;
+                theBeast.WaitingForFeeding *= 2;
                 // Time limit * 3
                 break;
             case "Time Limit 2":
-                theBeast.WaitingForFeeding *= 3;
+                theBeast.WaitingForFeeding *= 2;
                 // Time limit * 3
                 break;
             case "Time Limit 3":

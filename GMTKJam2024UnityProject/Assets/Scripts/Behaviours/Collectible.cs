@@ -5,6 +5,11 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
 
+    public static float MinValue = 1f; //-> * 1 scale
+    public static float MaxValue = 100240; //-> * 3 scale
+
+    public static float MaxCollectibleScale = 3.0f;
+
     private static ArrayList disabledCollectibles;
     private GameObject player;
 
@@ -15,6 +20,8 @@ public class Collectible : MonoBehaviour
     private float value = 1.0f;
 
     private Vector3 initialPosition;
+
+    private float scale = 1.0f;
 
     private void Awake()
     {
@@ -31,6 +38,10 @@ public class Collectible : MonoBehaviour
         disabledCollectibles = new ArrayList();
 
         initialPosition = transform.position;
+
+        scale = 1 + Mathf.Log(value, 100);
+
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
 
@@ -40,7 +51,7 @@ public class Collectible : MonoBehaviour
     void Update()
     {
         // if player is close enough magnet the collectible, slow magnet speed
-        if (Vector3.Distance(player.transform.position, transform.position) < distanceDetect)
+        if (Vector3.Distance(player.transform.position, transform.position) < distanceDetect * scale)
         {
             float force = 0.005f;
             transform.position = Vector3.Lerp(transform.position, player.transform.position, force);

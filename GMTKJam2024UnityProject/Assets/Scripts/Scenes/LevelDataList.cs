@@ -56,22 +56,22 @@ public class LevelDataList
 
         levelData.shopItems = shopItems;
         levelData.level = level;
-        levelData.initialTimeLimit = 30;
-        levelData.goalData = 12 * 12 * 12;
+        levelData.initialTimeLimit = 15;
+        levelData.goalData = 12 * 12 * 12 * 12;
 
         switch (level) {
             case 1:
-                shopItems.Add(new ShopItem { name = "Time Limit 1", price = 1, isPurchased = false });
-                shopItems.Add(new ShopItem { name = "Time Limit 2", price = 10, isPurchased = false });
-                shopItems.Add(new ShopItem { name = "Time Limit 3", price = 100, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 1", price = 10, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 2", price = 100, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 3", price = 500, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Time Limit 4", price = 1000, isPurchased = false });
 
-                shopItems.Add(new ShopItem { name = "Speed 1", price = 5, isPurchased = false });
-                shopItems.Add(new ShopItem { name = "Speed 2", price = 100, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Speed 1", price = 50, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Speed 2", price = 1000, isPurchased = false });
 
-                shopItems.Add(new ShopItem { name = "Attack", price = 20, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Attack", price = 200, isPurchased = false });
 
-                shopItems.Add(new ShopItem { name = "Attack Damage 1", price = 500, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Attack Damage 1", price = 5000, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Attack Damage 1", price = UNAVAILABLE_ITEM, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Attack Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
