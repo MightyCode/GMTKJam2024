@@ -6,13 +6,17 @@ public class LootOnDeath : MonoBehaviour
 {
     [SerializeField] public List<GameObject> LootTable;
 
+    public float SpawnRadius = 6f; 
 
     private void OnDestroy()
     {
-        Debug.Log("WE ARE DEAD WE MUST LOOT !");
+
         foreach(GameObject obj in LootTable)
         {
-            Instantiate(obj,this.transform,true);
+            Vector3 randomPosition = transform.position + Random.insideUnitSphere * SpawnRadius;
+            randomPosition.y = 0.4f;
+
+            Instantiate(obj,randomPosition,Quaternion.identity);
         }
     }
 }
