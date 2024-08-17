@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
         Moving,
     }
 
+    public static PlayerManager Instance;
+
     [SerializeField] private CharacterController characterController;
 
     private PlayerInputAction playerInputActions;
@@ -44,7 +46,14 @@ public class PlayerManager : MonoBehaviour
         // Initialisation du PlayerInputActions
         playerInputActions = new PlayerInputAction();
 
-
+        if(Instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
 
     }
 
@@ -88,7 +97,6 @@ public class PlayerManager : MonoBehaviour
         Vector2 movement = mouvementAction.ReadValue<Vector2>();
         moveInput.x = Speed * movement.x;
         moveInput.z = Speed * movement.y;
-        Debug.Log("Mouvement en cours : " + moveInput);
 
         characterController.Move(moveInput * Time.deltaTime);
     }
