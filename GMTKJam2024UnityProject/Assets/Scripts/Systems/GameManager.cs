@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
                 timerText.color = Color.Lerp(Color.red, Color.green, remainingTime / HarvestTime);
             }
         }
-    }
 
     public void BlockHarverst()
     {
