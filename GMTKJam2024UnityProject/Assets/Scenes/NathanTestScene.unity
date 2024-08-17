@@ -1222,8 +1222,8 @@ Transform:
   m_GameObject: {fileID: 697506486}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.78, y: 0.041740417, z: 2}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: -3.8018, y: 0.4295, z: 2}
+  m_LocalScale: {x: 5.0435, y: 1.7754, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 684340354}
@@ -3319,12 +3319,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1726624865}
     - target: {fileID: 5259084626945827838, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
+      propertyPath: Speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259084626945827838, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1726624865}
     - target: {fileID: 5259084626945827838, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: dashSpeed
-      value: 120
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259084626945827838, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
+      propertyPath: dashDuration
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259084626945827838, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
+      propertyPath: DistanceToCamera
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5372223662709144468, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: m_Camera
@@ -3336,7 +3348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8824508340023212578, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.153
       objectReference: {fileID: 0}
     - target: {fileID: 8824508340023212578, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: m_LocalPosition.z

@@ -372,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8996283815093892290}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.71, y: 0, z: 9.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -642,10 +642,10 @@ MonoBehaviour:
   characterController: {fileID: 864631690198282714}
   Speed: 15
   Camera: {fileID: 0}
-  DistanceToCamera: 10
+  DistanceToCamera: 18
   Friction: 10
   Scale: 1
-  dashSpeed: 25
+  dashSpeed: 20
   dashDuration: 0.25
   dashCooldown: 1
   turnSmoothTime: 0.1
