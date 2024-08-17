@@ -43,13 +43,10 @@ public class TheBeast : MonoBehaviour
         float scale = Mathf.Log(player.BaseLog + currentFood, player.BaseLog);
         scale = Mathf.Min(scale, player.MaxScale);
 
-        transform.localScale = new Vector3(initialScale.x * scale, 1, initialScale.z * scale);
-        transform.position =
+        transform.localScale = new Vector3(initialScale.x * scale, initialScale.y * scale, initialScale.z * scale);
+        /*transform.position =
             new Vector3(initalXRef - transform.localScale.x / 2,
-            transform.localScale.y, transform.position.z);
-
-
-        foodText.text = currentFood + "/" + FoodGoal;
+            transform.localScale.y, transform.position.z);*/
     }
 
 
