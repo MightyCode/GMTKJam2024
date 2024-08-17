@@ -115,16 +115,12 @@ public class TheBeast : MonoBehaviour
             SetFood(currentFood + player.Resource);
             player.RemoveResource(player.Resource);
 
-            
-
 
             if (currentFood >= FoodGoal)
             {
                // TODO Réussite jeu
             } else
             {
-
-                foodText.text = currentFood + "/" + FoodGoal;
                     
                 // Reset certain thing in worlds
                 Collectible.ResetAll();
