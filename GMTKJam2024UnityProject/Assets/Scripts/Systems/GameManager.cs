@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                text.text = ;
+                text.text = "0.00";
             }
 
         }
