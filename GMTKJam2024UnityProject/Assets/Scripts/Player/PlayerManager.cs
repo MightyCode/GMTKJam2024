@@ -16,11 +16,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private CharacterController characterController;
 
     private PlayerInputAction playerInputActions;
+    private PlayerInput playerInput;
 
     private InputAction mouvementAction;
+    private InputAction lookAction;
     private InputAction attackAction;
     private InputAction dashAction;
 
+    private bool IsKeyboardAndMouse = true;
+
+    [Header("Mouvement related Data")]
     public float Speed;
 
     private Vector3 moveInput;
@@ -30,8 +35,7 @@ public class PlayerManager : MonoBehaviour
     public float DistanceToCamera;
 
 
-    public float Friction;
-
+    [Header("Scale related Data")]
     public float Scale = 1;
 
     private float MaxScale = 3;
@@ -50,6 +54,10 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
+
+
+    [Header("Attack Data")]
+    [SerializeField] private List<DamagingElement> playerWeapons = new List<DamagingElement>();
 
     float resource;
 
@@ -93,10 +101,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        // Initialisation du PlayerInputActions
-        playerInputActions = new PlayerInputAction();
 
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(this);
         }
@@ -105,12 +111,17 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         }
 
+        playerInputActions = new PlayerInputAction();
+
+        playerInput = this.GetComponent<PlayerInput>();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = this.GetComponent<CharacterController>();
+
 
         if (Camera != null)
         {
@@ -127,6 +138,9 @@ public class PlayerManager : MonoBehaviour
         mouvementAction = playerInputActions.Player.Move;
         mouvementAction.Enable();
 
+        lookAction = playerInputActions.Player.Look;
+        lookAction.Enable();
+
         attackAction = playerInputActions.Player.Attack;
         attackAction.Enable();
         attackAction.performed += AttackAction;
@@ -141,25 +155,66 @@ public class PlayerManager : MonoBehaviour
         mouvementAction.Disable();
         attackAction.Disable(); 
         dashAction.Disable();
+        lookAction.Disable();
+    }
+
+    private bool IsKeyboardControlled(PlayerInput inputType)
+    {
+        var currentDevice = inputType.currentControlScheme;
+
+        Debug.Log("OnControlTypeChanged called");
+
+        if (currentDevice == "Keyboard&Mouse")
+        {
+            Debug.Log("Keyboard&Mouse detected");
+            return true;
+        }
+        return false;
     }
 
     private void UpdatePlayerMovement()
     {
 
-        //Player mouvement
-        Vector2 movement = mouvementAction.ReadValue<Vector2>();
 
+
+
+        //Player Rotation
+        if (IsKeyboardAndMouse)
+        {
+            Debug.Log("Keyboard&Mouse rotation");
+            Vector3 mouseScreenPosition = Input.mousePosition;
+
+            Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.transform.position.y));
+
+            Vector3 direction = (mouseWorldPosition - transform.position).normalized;
+            direction.y = 0; 
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+        }
+        else
+        {
+            Debug.Log("Gamepad rotation");
+            Vector3 rotation = Vector3.zero;
+            Vector2 cameraMouvement = lookAction.ReadValue<Vector2>();
+            rotation.x = cameraMouvement.x;
+            rotation.z = cameraMouvement.y;
+
+            if (rotation.magnitude > 0.1)
+            {
+                float targetAngle = Mathf.Atan2(rotation.x, rotation.z) * Mathf.Rad2Deg;
+                float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, Angle, 0f);
+            }
+        }
+
+        //Player mouvement
+
+        Vector2 movement = mouvementAction.ReadValue<Vector2>();
         moveInput.x = movement.x;
         moveInput.z = movement.y;
         moveInput = moveInput.normalized;
-
-        if (moveInput.magnitude > 0.1)
-        {
-            float targetAngle = Mathf.Atan2(moveInput.x, moveInput.z) * Mathf.Rad2Deg;
-            float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, Angle, 0f);
-        }
-
 
         characterController.Move(moveInput * Speed * Time.deltaTime);
     }
@@ -167,6 +222,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsKeyboardAndMouse = IsKeyboardControlled(playerInput);
         UpdatePlayerMovement();
 
         // As top view game set camera at the player position with a little offset in axis z
@@ -193,7 +249,13 @@ public class PlayerManager : MonoBehaviour
 
     private void AttackAction(InputAction.CallbackContext context)
     {
-        Debug.Log("Attack Detected");
+        Debug.Log("AttackAction Detected");
+        foreach (DamagingElement weapon in playerWeapons)
+        {   if(weapon != null)
+            {
+                weapon.Attack();
+            }
+        }
     }
 
     private IEnumerator Dash()

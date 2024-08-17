@@ -37,7 +37,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            player.GetComponent<PlayerManager>().AddResource(value);
+            player.GetComponentInChildren<PlayerManager>().AddResource(value);
             Destroy(gameObject);
         }
     }

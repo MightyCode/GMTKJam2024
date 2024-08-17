@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 timerText.color = Color.Lerp(Color.red, Color.green, remainingTime / HarvestTime);
         }
 
-        resourceCounterText.text = player.GetComponent<PlayerManager>().Resource.ToString();
+        resourceCounterText.text = player.GetComponentInChildren<PlayerManager>().Resource.ToString();
     }
 
     public void BlockHarverst()
