@@ -29,7 +29,9 @@ public class TheBeast : MonoBehaviour
     private UnityEvent m_onEnter = new UnityEvent();
 
     private Vector3 initialScale;
+
     private float initalXRef;
+
 
     // Start is called before the first frame update
     void Start()
