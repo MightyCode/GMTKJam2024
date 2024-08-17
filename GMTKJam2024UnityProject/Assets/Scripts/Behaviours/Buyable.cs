@@ -6,11 +6,10 @@ using UnityEngine;
 public class Buyable : MonoBehaviour
 {
     [SerializeField] private float price;
-    [SerializeField] private string upgrade;
     [SerializeField] private TheBeast theBeast;
     [SerializeField] private Upgrade upgradeManager;
 
-    [SerializeField] private TMP_Text shopText;
+    private TMP_Text shopText;
 
     private bool isBought = false;
 
@@ -21,20 +20,22 @@ public class Buyable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        baseMaterial = GetComponent<MeshRenderer>().material;
+        shopText = GetComponentInChildren<TMP_Text>();
+
         if (price == -1)
         {
-            shopText.color = Color.gray;
-            shopText.text = upgrade + "\nprice : XXX";
+            shopText.color = Color.red;
+            shopText.text = name + "\nPrice : XXX";
+            GetComponent<MeshRenderer>().material = bought;
         }
 
-        shopText.text = upgrade + " \nprice : " + price;
+        shopText.text = name + " \nPrice : " + price;
 
         if (isBought)
         {
-            shopText.color = Color.green;
+            shopText.color = Color.grey;
         }
-
-        baseMaterial = GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -45,20 +46,21 @@ public class Buyable : MonoBehaviour
 
     public void TryBuy()
     {
-        Debug.Log("--TryBuy");
+        if (!isBought)
+        { 
+            if (theBeast.CurrentFood >= price)
+            {
+                theBeast.SetFood(theBeast.CurrentFood - price);
+                upgradeManager.ApplyUpgrade(name);
+                isBought = true;
 
-        if (theBeast.CurrentFood >= price)
-        {
-            theBeast.SetFood(theBeast.CurrentFood - price);
-            upgradeManager.ApplyUpgrade(upgrade);
-            isBought = true;
-            shopText.color = Color.green;
-
-            //Replace material by bought
-            GetComponent<MeshRenderer>().material = bought;
-        } else
-        {
-            GetComponent<MeshRenderer>().material = tryingBuy;
+                //Replace material by bought
+                GetComponent<MeshRenderer>().material = bought;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material = tryingBuy;
+            }
         }
     }
 
