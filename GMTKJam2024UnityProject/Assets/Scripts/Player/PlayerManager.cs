@@ -27,12 +27,17 @@ public class PlayerManager : MonoBehaviour
 
     public Camera Camera;
 
-    public float DistanceToCamera = 20;
+    public float DistanceToCamera;
 
     public float Friction;
 
     public float Scale = 1;
 
+    private float MaxScale = 3;
+
+    private float BaseLog = 12;
+
+    [SerializeField] private float valueDescale;
 
     float resource;
 
@@ -45,6 +50,8 @@ public class PlayerManager : MonoBehaviour
     {
         resource -= amount;
 
+        UpdateScale();
+
         return resource;
     }
 
@@ -52,7 +59,17 @@ public class PlayerManager : MonoBehaviour
     {
         resource += amount;
 
+        UpdateScale();
+
         return resource;
+    }
+
+    public void UpdateScale()
+    {
+        Scale = Mathf.Min(Mathf.Log(BaseLog + resource, BaseLog), MaxScale);
+        transform.localScale = new Vector3(Scale, Scale, Scale);
+
+        DistanceToCamera = 18 + Scale * valueDescale;
     }
 
 

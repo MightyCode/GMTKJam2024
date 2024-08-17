@@ -536,6 +536,6 @@ MonoBehaviour:
   characterController: {fileID: 864631690198282714}
   Speed: 15
   Camera: {fileID: 0}
-  DistanceToCamera: 10
+  DistanceToCamera: 20
   Friction: 10
   Scale: 1
