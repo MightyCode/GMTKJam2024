@@ -172,9 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &4078418
@@ -452,9 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!1 &18500463
@@ -1241,9 +1243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &142401336
@@ -1542,9 +1545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &171157135
@@ -2581,7 +2585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   playerPrefab: {fileID: 2082697893}
-  theBeast: {fileID: 0}
+  theBeast: {fileID: 697506491}
+  shop: {fileID: 752572932}
 --- !u!1 &585861112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,7 +3050,7 @@ GameObject:
   m_Layer: 0
   m_Name: == SpawnArea ==
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3291,7 +3296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 551662007}
   timerText: {fileID: 1454875679}
-  waitingForFeeding: 20
+  WaitingForFeeding: 20
   IsWaiting: 1
   foodText: {fileID: 1332705702}
   FoodGoal: 1728
@@ -3835,7 +3840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 752572933}
   m_Layer: 0
-  m_Name: == Buyable ==
+  m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4086,9 +4091,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &866614128
@@ -4253,9 +4259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &922924205
@@ -4420,9 +4427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &937060118
@@ -4721,9 +4729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &1020979118
@@ -5395,9 +5404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &1181480589
@@ -8152,9 +8162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &1722427980
@@ -8458,9 +8469,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &1785940274
@@ -9555,9 +9567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9535ab429b774b499db556d399b9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0.3
+  Price: 0
   theBeast: {fileID: 697506491}
   upgradeManager: {fileID: 56264182}
+  IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
   bought: {fileID: 2100000, guid: 0c926f5d50556274589c07164d2a68e2, type: 2}
 --- !u!114 &2008416518
