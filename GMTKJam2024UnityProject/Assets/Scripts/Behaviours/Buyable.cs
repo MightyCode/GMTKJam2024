@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Buyable : MonoBehaviour
 {
-    [SerializeField] private float price;
+    public float Price;
     [SerializeField] private TheBeast theBeast;
     [SerializeField] private Upgrade upgradeManager;
 
     private TMP_Text shopText;
 
-    private bool isBought = false;
+    public bool IsBought = false;
 
     private Material baseMaterial;
     public Material tryingBuy;
@@ -23,16 +23,17 @@ public class Buyable : MonoBehaviour
         baseMaterial = GetComponent<MeshRenderer>().material;
         shopText = GetComponentInChildren<TMP_Text>();
 
-        if (price == -1)
+        if (Price == LevelDataList.UNAVAILABLE_ITEM)
         {
             shopText.color = Color.red;
             shopText.text = name + "\nPrice : XXX";
-            GetComponent<MeshRenderer>().material = bought;
+            GetComponent<MeshRenderer>().material = tryingBuy;
+        } else
+        {
+            shopText.text = name + " \nPrice : " + Price;
         }
 
-        shopText.text = name + " \nPrice : " + price;
-
-        if (isBought)
+        if (IsBought)
         {
             shopText.color = Color.grey;
         }
@@ -46,13 +47,13 @@ public class Buyable : MonoBehaviour
 
     public void TryBuy()
     {
-        if (!isBought)
+        if (!IsBought && Price > LevelDataList.UNAVAILABLE_ITEM)
         { 
-            if (theBeast.CurrentFood >= price)
+            if (theBeast.CurrentFood >= Price)
             {
-                theBeast.SetFood(theBeast.CurrentFood - price);
+                theBeast.SetFood(theBeast.CurrentFood - Price);
                 upgradeManager.ApplyUpgrade(name);
-                isBought = true;
+                IsBought = true;
 
                 //Replace material by bought
                 GetComponent<MeshRenderer>().material = bought;
@@ -66,7 +67,7 @@ public class Buyable : MonoBehaviour
 
     public void Leave()
     {
-        if (!isBought)
+        if (!IsBought && Price > LevelDataList.UNAVAILABLE_ITEM)
         {
             GetComponent<MeshRenderer>().material = baseMaterial;
         }

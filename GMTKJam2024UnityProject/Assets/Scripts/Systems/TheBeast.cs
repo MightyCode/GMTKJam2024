@@ -15,13 +15,15 @@ public class TheBeast : MonoBehaviour
     private Timer feedTimer;
 
     [SerializeField]
-    public float waitingForFeeding = 20;
+    public float WaitingForFeeding = 20;
     [SerializeField]
     bool IsWaiting = true;
 
     [SerializeField]
     private TMP_Text foodText;
+
     public float FoodGoal;
+
     private float currentFood;
 
     public float CurrentFood => currentFood;
@@ -38,7 +40,7 @@ public class TheBeast : MonoBehaviour
     {
         currentFood = food;
 
-        float scale = Mathf.Log(12 + currentFood, player.BaseLog);
+        float scale = Mathf.Log(player.BaseLog + currentFood, player.BaseLog);
         scale = Mathf.Min(scale, player.MaxScale);
 
         transform.localScale = new Vector3(initialScale.x * scale, 1, initialScale.z * scale);
@@ -57,7 +59,7 @@ public class TheBeast : MonoBehaviour
         player  = PlayerManager.Instance;
 
         feedTimer = new Timer();
-        feedTimer.Start(waitingForFeeding);
+        feedTimer.Start(WaitingForFeeding);
 
         foodText.text = currentFood + "/" + FoodGoal;
 
@@ -73,7 +75,7 @@ public class TheBeast : MonoBehaviour
         {
             feedTimer.Update();
 
-            float remainingTime = waitingForFeeding - feedTimer.ElapsedTime;
+            float remainingTime = WaitingForFeeding - feedTimer.ElapsedTime;
             TimeSpan time = TimeSpan.FromSeconds(remainingTime);
 
             if (remainingTime <= 0)
@@ -89,7 +91,7 @@ public class TheBeast : MonoBehaviour
             }
 
             // color from blue to red
-            timerText.color = Color.Lerp(Color.red, Color.green, remainingTime / waitingForFeeding);
+            timerText.color = Color.Lerp(Color.red, Color.green, remainingTime / WaitingForFeeding);
         }
     }
 

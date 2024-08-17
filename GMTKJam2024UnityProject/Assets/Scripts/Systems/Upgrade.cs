@@ -4,28 +4,6 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
-    /* List upgrade */
-    /**
-     * Speed 1 : player speed * 1.5
-     * Speed 2 : player speed * 2
-     * 
-     * Attack : Unlock the attack
-     * Dash : Unlock the dash
-     * 
-     * Attack Damage 1 : Attack damage * 1.5
-     * Attack Damage 2 : Attack damage * 2
-     * 
-     * Attack Speed 1 : Attack speed * 1.5
-     * 
-     * Dash speed 1 : Dash speed * 1.5
-     * 
-     * Time Limit 1 : Time limit * 3
-     * Time Limit 2 : Time limit * 3
-     * Time Limit 3 : Time limit * 2
-     * Time Limit 4 : Time limit * 1.5
-     * 
-     */
-
     [SerializeField] TheBeast theBeast;
 
     private PlayerManager playerManager;
@@ -81,19 +59,19 @@ public class Upgrade : MonoBehaviour
                 // Dash speed * 1.5
                 break;
             case "Time Limit 1":
-                theBeast.waitingForFeeding *= 3;
+                theBeast.WaitingForFeeding *= 3;
                 // Time limit * 3
                 break;
             case "Time Limit 2":
-                theBeast.waitingForFeeding *= 3;
+                theBeast.WaitingForFeeding *= 3;
                 // Time limit * 3
                 break;
             case "Time Limit 3":
-                theBeast.waitingForFeeding *= 2;
+                theBeast.WaitingForFeeding *= 2;
                 // Time limit * 2
                 break;
             case "Time Limit 4":
-                theBeast.waitingForFeeding *= 1.5f;
+                theBeast.WaitingForFeeding *= 1.5f;
                 // Time limit * 1.5
                 break;
         }

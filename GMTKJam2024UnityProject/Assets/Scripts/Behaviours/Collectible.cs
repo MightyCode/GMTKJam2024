@@ -6,8 +6,6 @@ public class Collectible : MonoBehaviour
 {
 
     private static ArrayList disabledCollectibles;
-
-    [SerializeField]
     private GameObject player;
 
     [SerializeField]

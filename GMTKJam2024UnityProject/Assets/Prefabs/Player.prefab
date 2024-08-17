@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1554055982162742191}
-  Speed: 15
+  Speed: 8
   Camera: {fileID: 0}
   DistanceToCamera: 18
   Scale: 1
