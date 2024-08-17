@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 1554055982162742191}
   - component: {fileID: 3092221088899052493}
   - component: {fileID: 8047277603046092542}
+  - component: {fileID: 6650172101402762750}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
@@ -514,13 +515,30 @@ MonoBehaviour:
   MaxScale: 3
   BaseLog: 12
   valueDescale: 0
-  dashSpeed: 20
-  dashDuration: 0.25
-  dashCooldown: 1
+  CanDash: 0
+  CanAttack: 0
+  DashSpeed: 25
+  DashDuration: 1
+  DashCooldown: 1
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   playerWeapons:
   - {fileID: 8504794253871996791}
+--- !u!114 &6650172101402762750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701031792611085467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8386abfc43773d440adfbf63f83f1353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  invicibilityFrame: 1
+  currentHealth: 0
 --- !u!1 &2721950336003150308
 GameObject:
   m_ObjectHideFlags: 0

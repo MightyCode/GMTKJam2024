@@ -159,11 +159,9 @@ public class PlayerManager : MonoBehaviour
     {
         var currentDevice = inputType.currentControlScheme;
 
-        Debug.Log("OnControlTypeChanged called");
 
         if (currentDevice == "Keyboard&Mouse")
         {
-            Debug.Log("Keyboard&Mouse detected");
             return true;
         }
         return false;
@@ -177,7 +175,6 @@ public class PlayerManager : MonoBehaviour
         //Player Rotation
         if (IsKeyboardAndMouse)
         {
-            Debug.Log("Keyboard&Mouse rotation");
             Vector3 mouseScreenPosition = Input.mousePosition;
 
             Vector3 mouseWorldPosition = Camera.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Mathf.Abs(Camera.transform.position.y)));
@@ -191,7 +188,6 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Gamepad rotation");
             Vector3 rotation = Vector3.zero;
             Vector2 cameraMouvement = lookAction.ReadValue<Vector2>();
             rotation.x = cameraMouvement.x;
