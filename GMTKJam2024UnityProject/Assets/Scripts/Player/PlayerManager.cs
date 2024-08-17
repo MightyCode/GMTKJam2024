@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     public float DistanceToCamera;
 
+
     public float Friction;
 
     public float Scale = 1;
@@ -38,6 +39,17 @@ public class PlayerManager : MonoBehaviour
     private float BaseLog = 12;
 
     [SerializeField] private float valueDescale;
+
+    [Header("Dashing Data")]
+    private bool canDash = true;
+    private bool isDashing = false;
+    [SerializeField] float dashSpeed = 25f;
+    [SerializeField] float dashDuration = 1f;
+    [SerializeField] float dashCooldown = 1f;
+
+
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothVelocity;
 
     float resource;
 
@@ -72,8 +84,6 @@ public class PlayerManager : MonoBehaviour
         DistanceToCamera = 18 + Scale * valueDescale;
     }
 
-
-
     // Todo : 
     // gestion de la "vie" / stun ?
     // gestion de l'attaque
@@ -107,6 +117,9 @@ public class PlayerManager : MonoBehaviour
             // Set rotation looking to the ground (top view)
             Camera.transform.rotation = Quaternion.Euler(90, 0, 0);
         }
+
+        canDash = true;
+        isDashing = false;
     }
 
     private void OnEnable()
@@ -116,11 +129,11 @@ public class PlayerManager : MonoBehaviour
 
         attackAction = playerInputActions.Player.Attack;
         attackAction.Enable();
-        attackAction.performed += Attack;
+        attackAction.performed += AttackAction;
 
         dashAction = playerInputActions.Player.Dash;
         dashAction.Enable();
-        dashAction.performed += Dash;
+        dashAction.performed += DashAction;
     }
 
     private void OnDisable()
@@ -135,10 +148,20 @@ public class PlayerManager : MonoBehaviour
 
         //Player mouvement
         Vector2 movement = mouvementAction.ReadValue<Vector2>();
-        moveInput.x = Speed * movement.x;
-        moveInput.z = Speed * movement.y;
 
-        characterController.Move(moveInput * Time.deltaTime);
+        moveInput.x = movement.x;
+        moveInput.z = movement.y;
+        moveInput = moveInput.normalized;
+
+        if (moveInput.magnitude > 0.1)
+        {
+            float targetAngle = Mathf.Atan2(moveInput.x, moveInput.z) * Mathf.Rad2Deg;
+            float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, Angle, 0f);
+        }
+
+
+        characterController.Move(moveInput * Speed * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -158,16 +181,49 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    private void Dash(InputAction.CallbackContext context)
+    private void DashAction(InputAction.CallbackContext context)
     {
         Debug.Log("Dash Detected");
+        if (canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
     }
 
-    private void Attack(InputAction.CallbackContext context)
+    private void AttackAction(InputAction.CallbackContext context)
     {
         Debug.Log("Attack Detected");
     }
 
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < dashDuration)
+        {
+            Vector2 movement = mouvementAction.ReadValue<Vector2>();
+            moveInput.x = movement.x;
+            moveInput.z = movement.y;
+            moveInput = moveInput.normalized;
+
+            characterController.Move(moveInput * dashSpeed * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        canDash = true;
+
+    }
 
 
 }
