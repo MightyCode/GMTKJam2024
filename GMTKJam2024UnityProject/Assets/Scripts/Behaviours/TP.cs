@@ -12,6 +12,9 @@ public class TP : MonoBehaviour
 
     public void OnEnter()
     {
+        // Move player to new coordinates
+        player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = tpPoint.position;
+        player.GetComponent<CharacterController>().enabled = true;
     }
 }
