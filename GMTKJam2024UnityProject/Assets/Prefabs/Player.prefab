@@ -663,7 +663,7 @@ MonoBehaviour:
   attackDamage: 1
   attackDuration: 0.5
   attackCooldown: 1
-  owner: {fileID: 0}
+  owner: {fileID: 2701031792611085467}
   DamagingCollider: {fileID: 5253011484149708805}
   DamagingRenderer: {fileID: 765818991402837705}
 --- !u!1 &5024003315125388291
