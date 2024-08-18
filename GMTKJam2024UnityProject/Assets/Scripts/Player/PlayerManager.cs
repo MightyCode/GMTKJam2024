@@ -66,6 +66,12 @@ public class PlayerManager : MonoBehaviour
 
     float resource;
 
+    private float currentGravitySpeed = 0f;
+
+    private float GRAVITY = 9.81f;
+
+    private float GRAVITY_LIMIT_SPEED = 10f;
+
     public float Resource
     {
         get { return resource; }
@@ -233,7 +239,27 @@ public class PlayerManager : MonoBehaviour
         moveInput.z = movement.y;
         moveInput = moveInput.normalized;
 
-        characterController.Move(moveInput * Speed * Time.deltaTime);
+        moveInput.x = moveInput.x * Speed * Time.deltaTime;
+        moveInput.z = moveInput.z * Speed * Time.deltaTime;
+
+        // Send a raycast below the player to check if he is on the ground
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f))
+        {
+            if (hit.collider != null)
+            {
+                currentGravitySpeed = 0;
+            }
+        }
+        else
+        {
+            currentGravitySpeed += GRAVITY * Time.deltaTime;
+            currentGravitySpeed = Mathf.Min(currentGravitySpeed, GRAVITY_LIMIT_SPEED);
+        }
+
+        moveInput.y = -currentGravitySpeed * Time.deltaTime;
+
+        characterController.Move(moveInput);
     }
 
     // Update is called once per frame
@@ -247,6 +273,11 @@ public class PlayerManager : MonoBehaviour
                 this.transform.position.x, 
                 this.transform.position.y + DistanceToCamera, 
                 this.transform.position.z);
+
+        if (this.transform.position.y < -10)
+        {
+
+        }
     }
 
     private void FixedUpdate()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamagingElement : MonoBehaviour
 {
 
-    [SerializeField] private float attackDamage = 1f;
+    [SerializeField] protected float attackDamage = 1f;
     [SerializeField] private float attackDuration = 1f;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject owner;
@@ -13,6 +13,15 @@ public class DamagingElement : MonoBehaviour
     [SerializeField] private Collider DamagingCollider;
     [SerializeField] private MeshRenderer DamagingRenderer;
 
+
+    public DamagingElement()
+    {
+    }
+
+    public DamagingElement(float attackDamage)
+    {
+        this.attackDamage = attackDamage;
+    }
 
     private bool canAttack = true;
 
@@ -24,7 +33,7 @@ public class DamagingElement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collide with" + other);
         Damagable damagable = other.gameObject.GetComponent<Damagable>();

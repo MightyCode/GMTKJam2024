@@ -29,6 +29,8 @@ public class Collectible : MonoBehaviour
         {
             disabledCollectibles = new ArrayList();
         }
+
+        transform.Rotate(0, Random.Range(0, 360), 0);
     }
 
     void Start()

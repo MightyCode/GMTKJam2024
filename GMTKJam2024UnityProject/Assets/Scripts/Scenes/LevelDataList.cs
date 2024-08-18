@@ -72,7 +72,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Attack", price = 200, isPurchased = false });
 
                 shopItems.Add(new ShopItem { name = "Attack Damage 1", price = 5000, isPurchased = false });
-                shopItems.Add(new ShopItem { name = "Attack Damage 1", price = UNAVAILABLE_ITEM, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Attack Damage 2", price = UNAVAILABLE_ITEM, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Attack Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
                 shopItems.Add(new ShopItem { name = "Dash", price = UNAVAILABLE_ITEM, isPurchased = false });
