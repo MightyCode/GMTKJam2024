@@ -10627,11 +10627,11 @@ PrefabInstance:
       objectReference: {fileID: 1726624865}
     - target: {fileID: 8047277603046092542, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: CanDash
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047277603046092542, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: CanAttack
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8824508340023212578, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
       propertyPath: m_LocalPosition.x
