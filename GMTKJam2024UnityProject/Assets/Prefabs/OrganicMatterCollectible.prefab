@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbfc89f399340c478b810a331f24fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibleSound: {fileID: 8300000, guid: c6fe6e9ee7ceab246a59879752e7d848, type: 3}
   CollectibleParticule: {fileID: 598460693989424286, guid: f936cd8fca01bb44fa54daa8aee33862, type: 3}
   distanceDetect: 2
   value: 0.1

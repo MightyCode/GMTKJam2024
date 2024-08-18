@@ -51,6 +51,8 @@ public class VictoryPanelUI : MonoBehaviour
 
     public void ShowVictoryPanel(int trip)
     {
+        AudioPlayer.audioPlayer.PlayWinAudio();
+
         this.gameObject.SetActive(true);
 
         int score = LevelDataList.GetScore(currentLevel, trip);

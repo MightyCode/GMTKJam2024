@@ -56,6 +56,7 @@ public class Buyable : MonoBehaviour
                 theBeast.SetFood(theBeast.CurrentFood - Price);
                 upgradeManager.ApplyUpgrade(name);
                 IsBought = true;
+                AudioPlayer.audioPlayer.PlayUpgradeAudio();
 
                 //Replace material by bought
                 GetComponent<MeshRenderer>().material = bought;

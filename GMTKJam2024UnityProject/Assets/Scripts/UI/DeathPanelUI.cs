@@ -23,6 +23,7 @@ public class DeathPanelUI : MonoBehaviour
 
     public void ShowDeathPanel()
     {
+        AudioPlayer.audioPlayer.PlayDeathAudio();
         Time.timeScale = 0f;
         this.gameObject.SetActive(true);
     }
