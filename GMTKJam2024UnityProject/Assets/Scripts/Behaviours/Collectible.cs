@@ -16,8 +16,7 @@ public class Collectible : MonoBehaviour
     [SerializeField]
     private float distanceDetect = 1.0f;
 
-    [SerializeField]
-    private float value = 1.0f;
+    public float value = 1.0f;
 
     private Vector3 initialPosition;
 

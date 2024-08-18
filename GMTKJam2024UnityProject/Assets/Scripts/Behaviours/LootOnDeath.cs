@@ -6,6 +6,8 @@ public class LootOnDeath : MonoBehaviour
 {
     [SerializeField] public List<GameObject> LootTable;
 
+    [SerializeField] public int value;
+
     public float SpawnRadius = 6f; 
 
     private void OnDestroy()
@@ -16,7 +18,10 @@ public class LootOnDeath : MonoBehaviour
             Vector3 randomPosition = transform.position + Random.insideUnitSphere * SpawnRadius;
             randomPosition.y = 0.4f;
 
-            Instantiate(obj,randomPosition,Quaternion.identity);
+            GameObject spawned = Instantiate(obj,randomPosition,Quaternion.identity);
+
+            Collectible collectible = spawned.GetComponent<Collectible>();
+            collectible.value = value;
         }
     }
 }
