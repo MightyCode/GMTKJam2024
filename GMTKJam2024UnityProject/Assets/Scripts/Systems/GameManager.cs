@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
-    private TMP_Text playerResourceCounterText;
+    private PlayerManager player;
 
-    private GameObject playerBody, playerUI;
+    [SerializeField]
+    private TMP_Text playerResourceCounterText;
 
     private void Awake()
     {
@@ -21,16 +21,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get child object of player named "PlayerUI"
-        playerUI = player.transform.Find("PlayerUI").gameObject;
-        playerResourceCounterText = playerUI.transform.Find("ResourceCounter").GetComponent<TMP_Text>();
-
-        playerBody = player.transform.Find("PlayerBody").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerResourceCounterText.text = PlayerManager.Instance.Resource.ToString();
+        playerResourceCounterText.text = player.Resource.ToString();
     }
 }
