@@ -159,6 +159,7 @@ public class TheBeast : MonoBehaviour
             {
                 // Reset certain thing in worlds
                 Collectible.ResetAll();
+                Damagable.ResetAll();
 
                 // Reseting health of the player
                 Damagable playerDamagable = player.GetComponent<Damagable>();

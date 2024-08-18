@@ -7,16 +7,13 @@ public class TP : MonoBehaviour
     [SerializeField]
     private Transform tpPoint;
 
-    [SerializeField]
-    private GameObject player;
-
     public void OnEnter()
     {
-        GameObject playerBody = player.transform.Find("PlayerBody").gameObject;
+        GameObject playerBody = PlayerManager.Instance.gameObject;
 
         // Move player to new coordinates
         playerBody.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = tpPoint.position;
+        PlayerManager.Instance.gameObject.transform.position = tpPoint.position;
         playerBody.GetComponent<CharacterController>().enabled = true;
     }
 }
