@@ -14,6 +14,8 @@ public class Damagable : MonoBehaviour
 
     [SerializeField] private HealthUI healthUI;
 
+    public ParticleSystem DamageParticule;
+
 
     private bool canBeHit = true;
     private void Awake()
@@ -58,6 +60,11 @@ public class Damagable : MonoBehaviour
     private IEnumerator TakeDamage(float damage)
     {
         canBeHit = false;
+
+        if(DamageParticule != null)
+        {
+            DamageParticule.Play();
+        }
         currentHealth -= damage;
         if (healthUI != null)
         {

@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8503571743927525878, guid: a7324f1cb8d9ec14986dd68c73b2f274, type: 3}
+      propertyPath: CollectibleParticule
+      value: 
+      objectReference: {fileID: 598460693989424286, guid: f936cd8fca01bb44fa54daa8aee33862, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1916,6 +1920,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &439761578
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2433,6 +2438,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &588277923
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4138,6 +4144,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &961528439
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4999,6 +5006,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!114 &1215513849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,6 +5023,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &1215513850
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6877,6 +6886,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &1909965720
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7001,6 +7011,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &1925457295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7773,6 +7784,7 @@ MonoBehaviour:
   currentHealth: 0
   invicibilityFrame: 1
   healthUI: {fileID: 0}
+  DamageParticule: {fileID: 0}
 --- !u!136 &2137377813
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8004,7 +8016,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3016298763360370420, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 364fd41c875fb3b4aa18cf6e9f73c7ea, type: 3}

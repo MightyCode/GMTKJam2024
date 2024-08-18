@@ -10,8 +10,11 @@ public class Collectible : MonoBehaviour
 
     public static float MaxCollectibleScale = 3.0f;
 
+    public ParticleSystem CollectibleParticule;
+
     private static ArrayList disabledCollectibles;
     private GameObject player;
+
 
     [SerializeField]
     private float distanceDetect = 1.0f;
@@ -86,6 +89,9 @@ public class Collectible : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             player.GetComponentInChildren<PlayerManager>().AddResource(value);
+            ParticleSystem particule = Instantiate(CollectibleParticule, transform.position, CollectibleParticule.transform.rotation,other.transform);
+            particule.Play();
+            Destroy(particule, 2f);
             gameObject.SetActive(false);
             disabledCollectibles.Add(gameObject);
         }
