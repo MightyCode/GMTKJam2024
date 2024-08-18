@@ -73,7 +73,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Attack Damage 2", price = UNAVAILABLE_ITEM, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Attack Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
-                shopItems.Add(new ShopItem { name = "Dash", price = UNAVAILABLE_ITEM, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Dash", price = 0, isPurchased = true });
 
                 shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
@@ -96,7 +96,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Attack Damage 2", price = UNAVAILABLE_ITEM, isPurchased = false });
                 shopItems.Add(new ShopItem { name = "Attack Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
-                shopItems.Add(new ShopItem { name = "Dash", price = UNAVAILABLE_ITEM, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Dash", price = 0, isPurchased = true });
 
                 shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 

@@ -29,6 +29,10 @@ public class Loader : MonoBehaviour
             buyable.Price = item.price;
             buyable.IsBought = item.isPurchased;
 
+            if (buyable.IsBought)
+            {
+                buyable.TryBuy();
+            }
         }
     }
 
