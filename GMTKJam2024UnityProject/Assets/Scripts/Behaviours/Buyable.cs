@@ -17,6 +17,10 @@ public class Buyable : MonoBehaviour
     public Material tryingBuy;
     public Material bought;
 
+    void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,7 @@ public class Buyable : MonoBehaviour
 
         if (IsBought)
         {
+            GetComponent<MeshRenderer>().material = bought;
             shopText.color = Color.grey;
         }
     }

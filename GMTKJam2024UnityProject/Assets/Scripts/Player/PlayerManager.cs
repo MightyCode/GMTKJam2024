@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,6 +64,9 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Attack Data")]
     [SerializeField] private List<DamagingElement> playerWeapons = new List<DamagingElement>();
+
+    [SerializeField]
+    private TMP_Text playerResourceCounterText;
 
     float resource;
 
@@ -266,6 +270,9 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerResourceCounterText != null)
+            playerResourceCounterText.text = Resource.ToString();
+
         IsKeyboardAndMouse = IsKeyboardControlled(playerInput);
         UpdatePlayerMovement();
 

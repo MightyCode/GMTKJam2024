@@ -13,16 +13,6 @@ public class DamagingElement : MonoBehaviour
     [SerializeField] private Collider DamagingCollider;
     [SerializeField] private MeshRenderer DamagingRenderer;
 
-
-    public DamagingElement()
-    {
-    }
-
-    public DamagingElement(float attackDamage)
-    {
-        this.attackDamage = attackDamage;
-    }
-
     private bool canAttack = true;
 
     public void Attack()
@@ -45,11 +35,7 @@ public class DamagingElement : MonoBehaviour
             }
         }
     }
-    private void Update()
-    {
-
-    }
-
+ 
     private IEnumerator AttackWithWeapon()
     {
         canAttack = false;

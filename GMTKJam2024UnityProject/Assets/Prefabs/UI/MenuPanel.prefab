@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credt : \nNathan Salin : Programmation, 3D Art\nMaxence Bazin : Programmation\nThibaud
+  m_text: "Credits : \nNathan Salin : Programmation, 3D Art\nMaxence Bazin : Programmation\nThibaud
     Perez : 3D art, Music, Sound"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e781f5b6732f1ed47949af6d69d956a9, type: 2}
@@ -256,9 +256,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VictoryPanelUI, Assembly-CSharp
-        m_MethodName: ExitApplication
+      - m_Target: {fileID: 6555546989405544100}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -25,20 +25,12 @@ public class VictoryPanelUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    private void Start()
+    {
+    }
+
     public void Update()
     {
-        // check in resources if scene with level + 1 exists
-        
-        Scene scene = SceneManager.GetSceneByName("Level" + (currentLevel + 1));
-
-        if (scene.IsValid())
-        {
-            nextLevelButton.interactable = true;
-        }
-        else
-        {
-            nextLevelButton.interactable = false;
-        }
     }
 
     public void RestartCurrentLevel()
@@ -54,7 +46,18 @@ public class VictoryPanelUI : MonoBehaviour
             AudioPlayer.audioPlayer.PlayWinAudio();
         }
 
-        this.gameObject.SetActive(true);
+        int index = SceneManager.GetActiveScene().buildIndex;
+
+        if (index + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            nextLevelButton.interactable = true;
+        }
+        else
+        {
+            nextLevelButton.interactable = false;
+        }
+
+        gameObject.SetActive(true);
 
         int score = LevelDataList.GetScore(currentLevel, trip);
 
@@ -67,9 +70,9 @@ public class VictoryPanelUI : MonoBehaviour
 
         tripText.text = trip.ToString();
 
-        int currentScore = Save.LoadScore(currentLevel);
-        if (currentScore > trip)
-            Save.SaveScore(currentLevel, trip);
+        int savedTripScore = Save.LoadTripScore(currentLevel);
+        if (savedTripScore > trip || savedTripScore == Save.NO_SCORE)
+            Save.SaveTripScore(currentLevel, trip);
 
         Time.timeScale = 0f;
     }

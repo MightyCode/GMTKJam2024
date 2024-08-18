@@ -78,7 +78,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
                 levelData.initialTimeLimit = 15;
-                levelData.goalData = 600;
+                levelData.goalData = 585;
 
                 break;
             case 2:
@@ -101,7 +101,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
                 levelData.initialTimeLimit = 25;
-                levelData.goalData = 522;
+                levelData.goalData = 505;
 
                 break;
             case 3:
@@ -137,9 +137,9 @@ public class LevelDataList
     {
         if (level == 1)
         {
-            if (trip <= 4)
+            if (trip <= 3)
                 return 3;
-            else if (trip <= 6)
+            else if (trip <= 5)
                 return 2;
             else
                 return 1;
@@ -147,9 +147,9 @@ public class LevelDataList
 
         if (level == 2)
         {
-            if (trip <= 3)
+            if (trip <= 1)
                 return 3;
-            else if (trip <= 5)
+            else if (trip <= 3)
                 return 2;
             else
                 return 1;

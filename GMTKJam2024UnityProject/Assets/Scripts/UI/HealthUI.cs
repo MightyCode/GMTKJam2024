@@ -14,7 +14,8 @@ public class HealthUI : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < Target.currentHealth; i++) {
+        Debug.Log(gameObject.name + " " + Target.maxHealth + " " + Target.currentHealth);
+        for (int i = 0; i < Target.maxHealth; i++) {
             Heart newHeart = Instantiate(heartToSpawn,this.transform);
             HealthList.Add(newHeart);
             currentLifeIndex++;

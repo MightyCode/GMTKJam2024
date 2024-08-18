@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 public class Collectible : MonoBehaviour
 {
+    private static ArrayList DestructedCollectibles;
 
     public static float MinValue = 1f; //-> * 1 scale
     public static float MaxValue = 100240; //-> * 3 scale
@@ -14,8 +13,6 @@ public class Collectible : MonoBehaviour
     public AudioClip collectibleSound;
 
     public ParticleSystem CollectibleParticule;
-
-    private static ArrayList disabledCollectibles;
     private GameObject player;
 
 
@@ -32,22 +29,19 @@ public class Collectible : MonoBehaviour
 
     private float baseRotation;
 
+    public bool BeenSpawn;
+
     private void Awake()
     {
-        if (disabledCollectibles == null)
+        if (DestructedCollectibles == null)
         {
-            disabledCollectibles = new ArrayList();
+            DestructedCollectibles = new ArrayList();
         }
-
-        baseRotation = Random.Range(0, 360);
-        transform.Rotate(0, baseRotation, 0);
     }
 
     void Start()
     {
         player = PlayerManager.Instance.gameObject;
-
-        disabledCollectibles = new ArrayList();
 
         initialPosition = transform.position;
 
@@ -60,6 +54,9 @@ public class Collectible : MonoBehaviour
         floatTweening.SetTweeningValues(ETweeningType.Linear, ETweeningBehaviour.In);
 
         floatTweening.InitTwoValue(8, 0, 360);
+
+        baseRotation = Random.Range(0, 360);
+        transform.Rotate(0, baseRotation, 0);
     }
 
 
@@ -91,25 +88,40 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-
             AudioPlayer.audioPlayer.PlayAudioWithRandomPitch(collectibleSound);
             player.GetComponentInChildren<PlayerManager>().AddResource(value);
             ParticleSystem particule = Instantiate(CollectibleParticule, transform.position, CollectibleParticule.transform.rotation, other.transform);
             particule.Play();
             Destroy(particule, 2f);
-            gameObject.SetActive(false);
-            disabledCollectibles.Add(gameObject);
+
+            if (BeenSpawn)
+                Destroy(gameObject);
+            else
+            {
+                gameObject.SetActive(false);
+                DestructedCollectibles.Add(gameObject);
+            }
         }
+    }
+
+    public void ResetState()
+    {
+        transform.position = GetComponent<Collectible>().initialPosition;
     }
 
     public static void ResetAll()
     {
-        foreach (GameObject collectible in disabledCollectibles)
+        foreach (GameObject collectible in DestructedCollectibles)
         {
             collectible.SetActive(true);
-            collectible.transform.position = collectible.GetComponent<Collectible>().initialPosition;
+            collectible.GetComponent<Collectible>().ResetState();
         }
 
-        disabledCollectibles.Clear();
+        DestructedCollectibles.Clear();
+    }
+
+    public static void Empty()
+    {
+        DestructedCollectibles.Clear();
     }
 }

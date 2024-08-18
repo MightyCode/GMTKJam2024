@@ -520,12 +520,13 @@ MonoBehaviour:
   CanDash: 0
   CanAttack: 0
   DashSpeed: 25
-  DashDuration: 1
+  DashDuration: 0.5
   DashCooldown: 1
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   playerWeapons:
   - {fileID: 8504794253871996791}
+  playerResourceCounterText: {fileID: 6931379397528962737}
 --- !u!114 &6650172101402762750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  currentHealth: 0
+  currentHealth: 3
   invicibilityFrame: 1
   healthUI: {fileID: 5024017860675082538}
   DamageParticule: {fileID: 5828634277745131034}

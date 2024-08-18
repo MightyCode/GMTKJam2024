@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
-    public static void SaveScore(int level, int trip)
+    public static int NO_SCORE = -1;
+
+    public static void SaveTripScore(int level, int trip)
     {
         PlayerPrefs.SetInt("Level" + level, trip);
         PlayerPrefs.Save();
     }
 
-    public static int LoadScore(int level)
+    public static int LoadTripScore(int level)
     {
         if (!PlayerPrefs.HasKey("Level" + level))
         {
-            return 0;
+            return NO_SCORE;
         }
 
-        return PlayerPrefs.GetInt("Level" + level, 0);
+        return PlayerPrefs.GetInt("Level" + level, NO_SCORE);
     }
 }

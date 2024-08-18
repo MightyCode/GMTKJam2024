@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Damagable : MonoBehaviour
-{
-
+{ 
     private static ArrayList disabledDamagable;
 
     public float maxHealth = 3f;
@@ -16,8 +15,8 @@ public class Damagable : MonoBehaviour
 
     public ParticleSystem DamageParticule;
 
-
     private bool canBeHit = true;
+
     private void Awake()
     {
         if (disabledDamagable == null)
@@ -26,7 +25,13 @@ public class Damagable : MonoBehaviour
         }
 
         currentHealth = maxHealth;
-        if(healthUI == null)
+    }
+
+    private void Start()
+    {
+        ResetState();
+
+        if (healthUI == null)
         {
             healthUI = GetComponentInChildren<HealthUI>();
         }
@@ -42,19 +47,21 @@ public class Damagable : MonoBehaviour
 
     public void GiveHealth(float amount)
     {
-        for (int i = 0; i < amount; i++)
+        if (healthUI == null)
         {
-            Debug.Log(i);
-            if (currentHealth + 1 <= maxHealth)
+            currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
             {
-                currentHealth += 1;
-                if (healthUI != null)
+                if (currentHealth + 1 <= maxHealth)
                 {
+                    currentHealth += 1;
                     healthUI.AddHeart();
                 }
             }
         }
-
     }
 
     private IEnumerator TakeDamage(float damage)
@@ -75,7 +82,7 @@ public class Damagable : MonoBehaviour
         {
             if (healthUI == null)
             {
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
                 disabledDamagable.Add(this.gameObject);
             } else
             {
@@ -87,15 +94,26 @@ public class Damagable : MonoBehaviour
         canBeHit = true;
     }
 
+    public void ResetState()
+    {
+        GiveHealth(maxHealth);
+        canBeHit = true;
+    }
+
     public static void ResetAll()
     {
         foreach (GameObject damageable in disabledDamagable)
         {
             damageable.SetActive(true);
             Damagable damagable = damageable.GetComponent<Damagable>();
-            damagable.currentHealth = damagable.maxHealth;
+            damagable.ResetState();
         }
 
+        disabledDamagable.Clear();
+    }
+
+    public static void Empty()
+    {
         disabledDamagable.Clear();
     }
 }

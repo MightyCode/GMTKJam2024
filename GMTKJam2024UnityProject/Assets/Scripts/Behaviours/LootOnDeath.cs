@@ -20,6 +20,11 @@ public class LootOnDeath : MonoBehaviour
                 randomPosition.y = 0.4f;
 
                 GameObject spawned = Instantiate(obj, randomPosition, Quaternion.identity);
+                Collectible collectible = spawned.GetComponent<Collectible>();
+                if (collectible != null)
+                {
+                    collectible.BeenSpawn = true;
+                }
             }
         }
         

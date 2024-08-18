@@ -48,14 +48,14 @@ public class Menu : MonoBehaviour
 
             GameObject tripValue = levelUI.transform.Find("TripValue").gameObject;
 
-            int score = Save.LoadScore(i + 1);
-            if (score == 0)
+            int tripScore = Save.LoadTripScore(i + 1);
+            if (tripScore == Save.NO_SCORE)
             {
                 if (i != 0)
                 {
-                    int previousScore = Save.LoadScore(i);
+                    int previousScore = Save.LoadTripScore(i);
 
-                    if (previousScore == 0)
+                    if (previousScore == Save.NO_SCORE)
                     {
                         button.interactable = false;
                     }
@@ -67,7 +67,7 @@ public class Menu : MonoBehaviour
                 tripValue.SetActive(false);
             } else
             {
-                tripValue.GetComponent<TMP_Text>().text = score.ToString();
+                tripValue.GetComponent<TMP_Text>().text = tripScore.ToString();
 
                 // Get image child stars
                 Image[] stars =
@@ -77,7 +77,7 @@ public class Menu : MonoBehaviour
                     levelUI.transform.Find("Star3").GetComponent<Image>()
                 };
 
-                int starScore = LevelDataList.GetScore(i + 1, score);
+                int starScore = LevelDataList.GetScore(i + 1, tripScore);
 
                 for (int j = 0; j < starScore; j++)
                 {
