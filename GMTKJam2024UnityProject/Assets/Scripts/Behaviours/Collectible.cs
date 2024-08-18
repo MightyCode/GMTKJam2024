@@ -50,12 +50,15 @@ public class Collectible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if player is close enough magnet the collectible, slow magnet speed
-        if (Vector3.Distance(player.transform.position, transform.position) < distanceDetect * scale)
-        {
-            float force = 0.005f;
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, force);
+        if(player != null) {
+            // if player is close enough magnet the collectible, slow magnet speed
+            if (Vector3.Distance(player.transform.position, transform.position) < distanceDetect * scale)
+            {
+                float force = 0.005f;
+                transform.position = Vector3.Lerp(transform.position, player.transform.position, force);
+            }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)

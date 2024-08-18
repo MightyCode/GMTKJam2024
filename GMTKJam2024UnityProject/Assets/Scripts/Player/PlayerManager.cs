@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     private InputAction lookAction;
     private InputAction attackAction;
     private InputAction dashAction;
+    private InputAction pauseAction;
 
     private bool IsKeyboardAndMouse = true;
 
@@ -138,6 +139,10 @@ public class PlayerManager : MonoBehaviour
         lookAction = playerInputActions.Player.Look;
         lookAction.Enable();
 
+        pauseAction = playerInputActions.Player.Pause;
+        pauseAction.Enable();
+        pauseAction.performed += PauseGame;
+
         attackAction = playerInputActions.Player.Attack;
         attackAction.Enable();
         attackAction.performed += AttackAction;
@@ -153,6 +158,26 @@ public class PlayerManager : MonoBehaviour
         attackAction.Disable(); 
         dashAction.Disable();
         lookAction.Disable();
+        pauseAction.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("OnDestroy called for" + this.name);
+        
+        mouvementAction.Disable();
+        attackAction.Disable();
+        dashAction.Disable();
+        lookAction.Disable();
+        pauseAction.Disable();
+
+        DeathPanelUI deathPanel = DeathPanelUI.Instance;
+        Debug.Log(deathPanel);
+        if (deathPanel != null)
+        {
+            deathPanel.SetExplanationToFieldDeath();
+            deathPanel.ShowDeathPanel();
+        }
     }
 
     private bool IsKeyboardControlled(PlayerInput inputType)
@@ -279,5 +304,14 @@ public class PlayerManager : MonoBehaviour
 
         CanDash = true;
 
+    }
+
+    private void PauseGame(InputAction.CallbackContext context)
+    {
+        PausePanelUI pausePanelUI = PausePanelUI.Instance;
+        if (pausePanelUI != null)
+        {
+            pausePanelUI.PauseGame();
+        }
     }
 }

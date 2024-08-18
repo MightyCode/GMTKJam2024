@@ -139,5 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LootTable:
   - {fileID: 5688914667385357280, guid: c023ce56a0ca7d8499b836a95469c8ca, type: 3}
-  - {fileID: 5688914667385357280, guid: c023ce56a0ca7d8499b836a95469c8ca, type: 3}
-  SpawnRadius: 6
+  SpawnRadius: 3

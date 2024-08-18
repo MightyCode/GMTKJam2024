@@ -9,6 +9,9 @@ public class FollowTarget : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position = target.transform.position;
+        if(target != null)
+        {
+            this.transform.position = target.transform.position;
+        }
     }
 }
