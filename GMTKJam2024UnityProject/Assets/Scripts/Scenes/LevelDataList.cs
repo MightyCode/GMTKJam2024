@@ -105,7 +105,26 @@ public class LevelDataList
 
                 break;
             case 3:
+                shopItems.Add(new ShopItem { name = "Time Limit 1", price = 5, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 2", price = 20, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 3", price = 500, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Time Limit 4", price = UNAVAILABLE_ITEM, isPurchased = false });
 
+                shopItems.Add(new ShopItem { name = "Speed 1", price = 100, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Speed 2", price = UNAVAILABLE_ITEM, isPurchased = false });
+
+                shopItems.Add(new ShopItem { name = "Attack", price = UNAVAILABLE_ITEM, isPurchased = false });
+
+                shopItems.Add(new ShopItem { name = "Attack Damage 1", price = UNAVAILABLE_ITEM, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Attack Damage 2", price = UNAVAILABLE_ITEM, isPurchased = false });
+                shopItems.Add(new ShopItem { name = "Attack Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
+
+                shopItems.Add(new ShopItem { name = "Dash", price = 20, isPurchased = false });
+
+                shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
+
+                levelData.initialTimeLimit = 10;
+                levelData.goalData = 522;
                 break;
             default:
                 break;
