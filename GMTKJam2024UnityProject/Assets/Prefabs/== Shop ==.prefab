@@ -141,8 +141,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.00831, y: 0.501}
+  m_SizeDelta: {x: 5.46182, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7143312772284294577
 Canvas:
@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -545,8 +544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: -0.00263, y: 0.501}
+  m_SizeDelta: {x: 5.46278, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8946316238852623258
 Canvas:
@@ -984,7 +983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -1188,8 +1186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.02649, y: 0.501}
+  m_SizeDelta: {x: 5.70289, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8455350843188993593
 Canvas:
@@ -1290,8 +1288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.00573, y: 0.501}
+  m_SizeDelta: {x: 5.36906, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1904520039599338829
 Canvas:
@@ -1392,8 +1390,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: -0.01053, y: 0.501}
+  m_SizeDelta: {x: 5.66705, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1709934872163470639
 Canvas:
@@ -1494,8 +1492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.01421, y: 0.501}
+  m_SizeDelta: {x: 5.58255, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5100206962793709820
 Canvas:
@@ -1596,8 +1594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.01482, y: 0.501}
+  m_SizeDelta: {x: 5.60486, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7515167221275632161
 Canvas:
@@ -1825,7 +1823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -2355,7 +2352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -3319,7 +3315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -3621,7 +3616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -3890,8 +3884,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.01607, y: 0.501}
+  m_SizeDelta: {x: 5.44537, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3354112137211192267
 Canvas:
@@ -4760,7 +4754,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -4906,8 +4899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.00217, y: 0.501}
+  m_SizeDelta: {x: 5.48572, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6521525453032942401
 Canvas:
@@ -5282,7 +5275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -6066,7 +6058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -6241,8 +6232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: -0.00103, y: 0.501}
+  m_SizeDelta: {x: 5.50875, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3948763095580584724
 Canvas:
@@ -6470,7 +6461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -6814,7 +6804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -7221,7 +7210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
-  theBeast: {fileID: 0}
   upgradeManager: {fileID: 0}
   IsBought: 0
   tryingBuy: {fileID: 2100000, guid: 5ebacaad4cfecfb499f9115f7e41e306, type: 2}
@@ -7402,8 +7390,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.01002, y: 0.501}
+  m_SizeDelta: {x: 5.72067, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &759244973911031272
 Canvas:
@@ -7804,8 +7792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.01, y: 0.501}
-  m_SizeDelta: {x: 5.23625, y: 1.0693}
+  m_AnchoredPosition: {x: 0.0073, y: 0.501}
+  m_SizeDelta: {x: 5.48842, y: 1.0693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2478328310892348241
 Canvas:

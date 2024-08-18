@@ -178,7 +178,6 @@ public class PlayerManager : MonoBehaviour
         pauseAction.Disable();
 
         DeathPanelUI deathPanel = DeathPanelUI.Instance;
-        Debug.Log(deathPanel);
         if (deathPanel != null)
         {
             deathPanel.SetExplanationToFieldDeath();
@@ -276,7 +275,12 @@ public class PlayerManager : MonoBehaviour
 
         if (this.transform.position.y < -10)
         {
-
+            DeathPanelUI deathPanel = DeathPanelUI.Instance;
+            if (deathPanel != null)
+            {
+                deathPanel.SetExplanationToVoidDeath();
+                deathPanel.ShowDeathPanel();
+            }
         }
     }
 

@@ -19,7 +19,7 @@ public class DeathPanelUI : MonoBehaviour
 
     private readonly string timeOutText = "You were too slow, the beast grew too hungry and has decided to eat you.\n She will find something else to do her bidding";
     private readonly string fieldDeathText = "You were slain on the field, the beast will be sad... but mostly hungry.\r\n";
-
+    private readonly string voidDeathText = "You fell down to the void, it consumed you, you are now part of it.\r\n";
 
     public void ShowDeathPanel()
     {
@@ -41,6 +41,11 @@ public class DeathPanelUI : MonoBehaviour
     public void SetExplanationToFieldDeath()
     {
         explainationText.text = fieldDeathText;
+    }
+
+    public void SetExplanationToVoidDeath()
+    {
+        explainationText.text = voidDeathText;
     }
 
     public void RestartCurrentLevel()
