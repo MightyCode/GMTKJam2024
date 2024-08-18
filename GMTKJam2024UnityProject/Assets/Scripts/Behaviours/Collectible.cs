@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class Collectible : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Collectible : MonoBehaviour
     public static float MaxValue = 100240; //-> * 3 scale
 
     public static float MaxCollectibleScale = 3.0f;
+
+    public AudioClip collectibleSound;
 
     public ParticleSystem CollectibleParticule;
 
@@ -88,8 +91,10 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+
+            AudioPlayer.audioPlayer.PlayAudioWithRandomPitch(collectibleSound);
             player.GetComponentInChildren<PlayerManager>().AddResource(value);
-            ParticleSystem particule = Instantiate(CollectibleParticule, transform.position, CollectibleParticule.transform.rotation,other.transform);
+            ParticleSystem particule = Instantiate(CollectibleParticule, transform.position, CollectibleParticule.transform.rotation, other.transform);
             particule.Play();
             Destroy(particule, 2f);
             gameObject.SetActive(false);
