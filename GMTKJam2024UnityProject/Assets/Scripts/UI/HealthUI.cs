@@ -5,19 +5,42 @@ using UnityEngine;
 public class HealthUI : MonoBehaviour
 {
 
-    private Damagable Target;
+    [SerializeField] private Damagable Target;
 
-    private List<GameObject> HealthList;
+    [SerializeField] private List<Heart> HealthList;
+    private int currentLifeIndex = -1;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Heart heartToSpawn;
+
+    private void Start()
     {
-        
+        for (int i = 0; i < Target.currentHealth; i++) {
+            Heart newHeart = Instantiate(heartToSpawn,this.transform);
+            HealthList.Add(newHeart);
+            currentLifeIndex++;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveHeart()
     {
-        
+        if(currentLifeIndex >= 0)
+        {
+            Heart currentHeart = HealthList[currentLifeIndex];
+            currentHeart.ChangeToEmptyHeart();
+            currentLifeIndex--;
+            Debug.Log("currentLifeIndex " + currentLifeIndex);
+        }
+    }
+
+    public void AddHeart()
+    {
+        if(currentLifeIndex < HealthList.Count)
+        {
+            currentLifeIndex++;
+            Heart currentHeart = HealthList[currentLifeIndex];
+            currentHeart.ChangeToFullHeart();
+            Debug.Log("currentLifeIndex " + currentLifeIndex);
+        }
+
     }
 }

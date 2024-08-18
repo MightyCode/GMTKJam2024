@@ -11,6 +11,12 @@ public class Heart : MonoBehaviour
 
     [SerializeField] private Image CurrentImage;
 
+
+    private void Awake()
+    {
+        CurrentImage = GetComponent<Image>();
+    }
+
     public void ChangeToFullHeart()
     {
         CurrentImage.sprite = FullHeart;
