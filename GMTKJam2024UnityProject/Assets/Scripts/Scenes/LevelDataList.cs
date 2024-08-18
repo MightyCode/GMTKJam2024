@@ -58,6 +58,7 @@ public class LevelDataList
         levelData.level = level;
         levelData.initialTimeLimit = 15;
         levelData.goalData = 12 * 12 * 12 * 12;
+        levelData.goalData = 12;
 
         switch (level) {
             case 1:
@@ -91,5 +92,20 @@ public class LevelDataList
         }
 
         return levelData;
+    }
+
+    public static int GetScore(int level, int trip)
+    {
+        if (level == 1)
+        {
+            if (trip <= 4)
+                return 3;
+            else if (trip <= 6)
+                return 2;
+            else
+                return 1;
+        }
+
+        return 0;
     }
 }

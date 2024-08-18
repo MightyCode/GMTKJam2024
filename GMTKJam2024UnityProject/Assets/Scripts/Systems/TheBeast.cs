@@ -34,6 +34,8 @@ public class TheBeast : MonoBehaviour
     [SerializeField]
     private UnityEvent m_onEnter = new UnityEvent();
 
+    private int counterFeeding = 0;
+
     private Vector3 initialScale;
 
     private float initalXRef;
@@ -127,24 +129,35 @@ public class TheBeast : MonoBehaviour
         if (feedTimer.Finished)
         {
             // TODO MORT
+
+            DeathPanelUI deathPanel = DeathPanelUI.Instance;
+            deathPanel.explainationText.text = "The Beast was too hungy, so it decide to it you";
+            if (deathPanel != null)
+            {
+                deathPanel.SetExplanationToFieldDeath();
+                deathPanel.ShowDeathPanel();
+            }
         } else
         {
+            if (player.Resource > 0)
+                counterFeeding++;
+
             SetFood(currentFood + player.Resource);
             player.RemoveResource(player.Resource);
-
 
             if (currentFood >= FoodGoal)
             {
                // TODO Réussite jeu
+                VictoryPanelUI victoryPanelUI = VictoryPanelUI.Instance;
+                victoryPanelUI.ShowVictoryPanel(counterFeeding);
             } else
             {
-                    
                 // Reset certain thing in worlds
                 Collectible.ResetAll();
 
-                //Resseting health of the player
+                // Reseting health of the player
                 Damagable playerDamagable = player.GetComponent<Damagable>();
-                playerDamagable.GiveHealth(playerDamagable.maxHealth+12);
+                playerDamagable.GiveHealth(playerDamagable.maxHealth + 12);
 
                 m_onEnter.Invoke();
             }
