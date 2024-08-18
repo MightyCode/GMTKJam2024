@@ -9,7 +9,7 @@ public class DeathPanelUI : MonoBehaviour
 
     [SerializeField] public static DeathPanelUI Instance;
 
-    [SerializeField] public TMP_Text explainationText;
+    [SerializeField] private TMP_Text explainationText;
 
     private void Awake()
     {

@@ -14,6 +14,9 @@ public class TheBeast : MonoBehaviour
     [SerializeField]
     private TMP_Text timerText;
 
+    [SerializeField]
+    private TMP_Text counterTripText;
+
     private Timer feedTimer;
 
     [SerializeField]
@@ -131,16 +134,18 @@ public class TheBeast : MonoBehaviour
             // TODO MORT
 
             DeathPanelUI deathPanel = DeathPanelUI.Instance;
-            deathPanel.explainationText.text = "The Beast was too hungy, so it decide to it you";
             if (deathPanel != null)
             {
-                deathPanel.SetExplanationToFieldDeath();
+                deathPanel.SetExplanationToTimeOut();
                 deathPanel.ShowDeathPanel();
             }
         } else
         {
             if (player.Resource > 0)
+            {
                 counterFeeding++;
+                counterTripText.text = counterFeeding.ToString();
+            }
 
             SetFood(currentFood + player.Resource);
             player.RemoveResource(player.Resource);

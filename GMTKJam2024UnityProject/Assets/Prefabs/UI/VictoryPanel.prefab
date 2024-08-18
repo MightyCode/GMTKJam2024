@@ -1594,6 +1594,7 @@ MonoBehaviour:
   star2: {fileID: 1472446945390900076}
   star3: {fileID: 1863874568346162222}
   tripText: {fileID: 1834726426490925825}
+  FilledStar: {fileID: 21300000, guid: c7d33d98fc63f2b48837bc72c8352d97, type: 3}
   nextLevelButton: {fileID: 4367872482641139509}
 --- !u!1 &7332020565800822704
 GameObject:

@@ -13,6 +13,8 @@ public class VictoryPanelUI : MonoBehaviour
 
     [SerializeField] private TMP_Text tripText;
 
+    [SerializeField] private Sprite FilledStar;
+
     public static VictoryPanelUI Instance { get; private set; }
 
     [SerializeField] private Button nextLevelButton;
@@ -53,14 +55,16 @@ public class VictoryPanelUI : MonoBehaviour
 
         Image[] stars = { star1, star2, star3 };
 
-        Debug.Log("Score: " + score);
-
         for (int i = 0; i < score; i++)
         {
-            stars[i].sprite = Resources.Load<Sprite>("Textures/FilledStar");
+            stars[i].sprite = FilledStar;
         }
 
         tripText.text = trip.ToString();
+
+        int currentScore = Save.LoadScore(currentLevel);
+        if (currentScore > trip)
+            Save.SaveScore(currentLevel, trip);
 
         Time.timeScale = 0f;
     }

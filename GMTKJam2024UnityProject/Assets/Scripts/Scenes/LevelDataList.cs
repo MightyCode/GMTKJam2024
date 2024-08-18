@@ -58,7 +58,6 @@ public class LevelDataList
         levelData.level = level;
         levelData.initialTimeLimit = 15;
         levelData.goalData = 12 * 12 * 12 * 12;
-        levelData.goalData = 12;
 
         switch (level) {
             case 1:

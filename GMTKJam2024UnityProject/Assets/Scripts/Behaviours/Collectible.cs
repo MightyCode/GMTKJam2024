@@ -23,6 +23,10 @@ public class Collectible : MonoBehaviour
 
     private float scale = 1.0f;
 
+    private FloatTweening floatTweening;
+
+    private float baseRotation;
+
     private void Awake()
     {
         if (disabledCollectibles == null)
@@ -30,7 +34,8 @@ public class Collectible : MonoBehaviour
             disabledCollectibles = new ArrayList();
         }
 
-        transform.Rotate(0, Random.Range(0, 360), 0);
+        baseRotation = Random.Range(0, 360);
+        transform.Rotate(0, baseRotation, 0);
     }
 
     void Start()
@@ -44,6 +49,12 @@ public class Collectible : MonoBehaviour
         scale = 1 + Mathf.Log(value, 100);
 
         transform.localScale = new Vector3(scale, scale, scale);
+
+        floatTweening = new FloatTweening();
+        floatTweening.SetTweeningOption(ETweeningOption.Loop);
+        floatTweening.SetTweeningValues(ETweeningType.Linear, ETweeningBehaviour.In);
+
+        floatTweening.InitTwoValue(8, 0, 360);
     }
 
 
@@ -61,6 +72,14 @@ public class Collectible : MonoBehaviour
             }
         }
 
+        floatTweening.Update();
+
+        float newRotation = baseRotation + floatTweening.Value;
+
+        if (newRotation > 180)
+            newRotation -= 360;
+
+        transform.rotation = Quaternion.Euler(0, newRotation, 0);
     }
 
     private void OnTriggerEnter(Collider other)
