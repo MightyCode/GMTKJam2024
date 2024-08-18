@@ -9,6 +9,8 @@ public class PiouPiou : MonoBehaviour
 
     [SerializeField] private float SpeedProjectile;
 
+    [SerializeField] private GameObject container; 
+
     private Timer timer;
 
     private GameObject spawnPoint;
@@ -36,6 +38,9 @@ public class PiouPiou : MonoBehaviour
         {
             // Create the projectile entity from the prefab with an argument witch is attackDamage
             GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+
+            // set container as parent of the projectile
+            projectile.transform.parent = container.transform;
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.Speed = SpeedProjectile;

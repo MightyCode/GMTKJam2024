@@ -242,10 +242,12 @@ public class PlayerManager : MonoBehaviour
         moveInput.z = moveInput.z * Speed * Time.deltaTime;
 
         // Send a raycast below the player to check if he is on the ground
+        // Don't fall if dash
+
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f) || isDashing)
         {
-            if (hit.collider != null)
+            if (hit.collider != null || isDashing)
             {
                 currentGravitySpeed = 0;
             }
