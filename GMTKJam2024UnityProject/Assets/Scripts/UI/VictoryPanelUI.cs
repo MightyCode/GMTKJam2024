@@ -28,12 +28,10 @@ public class VictoryPanelUI : MonoBehaviour
     public void Update()
     {
         // check in resources if scene with level + 1 exists
+        
+        Scene scene = SceneManager.GetSceneByName("Level" + (currentLevel + 1));
 
-        int a = SceneManager.sceneCountInBuildSettings;
-
-        Debug.Log(a);
-
-        if (a > (currentLevel+ 1))
+        if (scene.IsValid())
         {
             nextLevelButton.interactable = true;
         }
@@ -51,7 +49,10 @@ public class VictoryPanelUI : MonoBehaviour
 
     public void ShowVictoryPanel(int trip)
     {
-        AudioPlayer.audioPlayer.PlayWinAudio();
+        if (AudioPlayer.audioPlayer != null)
+        {
+            AudioPlayer.audioPlayer.PlayWinAudio();
+        }
 
         this.gameObject.SetActive(true);
 
