@@ -20,16 +20,19 @@ public class FleeingBeast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        float distance = Vector3.Distance(transform.position,fleeingTarget.position);
-
-        if(distance < fleeingRange)
+        if(fleeingTarget != null)
         {
-            Vector3 playerDirection = fleeingTarget.position - transform.position;
+            float distance = Vector3.Distance(transform.position, fleeingTarget.position);
 
-            Vector3 newPos = transform.position - playerDirection;
+            if (distance < fleeingRange)
+            {
+                Vector3 playerDirection = fleeingTarget.position - transform.position;
 
-            agent.SetDestination(newPos);
+                Vector3 newPos = transform.position - playerDirection;
+
+                agent.SetDestination(newPos);
+            }
         }
+
     }
 }
