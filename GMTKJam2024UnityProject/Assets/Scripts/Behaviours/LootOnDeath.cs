@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class LootOnDeath : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> LootTable;
+    public Damagable MonsterToDrop;
 
-    [SerializeField] public int value;
+    [SerializeField] public List<GameObject> LootTable;
 
     public float SpawnRadius = 6f; 
 
     private void OnDestroy()
     {
-
-        foreach(GameObject obj in LootTable)
+        if(MonsterToDrop.currentHealth <= 0)
         {
-            Vector3 randomPosition = transform.position + Random.insideUnitSphere * SpawnRadius;
-            randomPosition.y = 0.4f;
+            foreach (GameObject obj in LootTable)
+            {
+                Vector3 randomPosition = transform.position + Random.insideUnitSphere * SpawnRadius;
+                randomPosition.y = 0.4f;
 
-            GameObject spawned = Instantiate(obj,randomPosition,Quaternion.identity);
-
-            Collectible collectible = spawned.GetComponent<Collectible>();
-            collectible.value = value;
+                GameObject spawned = Instantiate(obj, randomPosition, Quaternion.identity);
+            }
         }
+        
     }
 }
