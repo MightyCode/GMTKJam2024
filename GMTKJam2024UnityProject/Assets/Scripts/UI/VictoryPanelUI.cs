@@ -29,11 +29,11 @@ public class VictoryPanelUI : MonoBehaviour
     {
         // check in resources if scene with level + 1 exists
 
-        Scene scene = SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1);
+        int a = SceneManager.sceneCountInBuildSettings;
 
-        Debug.Log((currentLevel + 1));
+        Debug.Log(a);
 
-        if (scene.IsValid())
+        if (a > (currentLevel+ 1))
         {
             nextLevelButton.interactable = true;
         }

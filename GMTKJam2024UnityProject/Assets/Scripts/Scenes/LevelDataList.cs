@@ -101,7 +101,7 @@ public class LevelDataList
                 shopItems.Add(new ShopItem { name = "Dash Speed 1", price = UNAVAILABLE_ITEM, isPurchased = false });
 
                 levelData.initialTimeLimit = 25;
-                levelData.goalData = 522;
+                levelData.goalData = 10;
 
                 break;
             case 3:
