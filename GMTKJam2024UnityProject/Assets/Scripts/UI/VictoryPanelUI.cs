@@ -28,8 +28,10 @@ public class VictoryPanelUI : MonoBehaviour
     public void Update()
     {
         // check in resources if scene with level + 1 exists
-        
-        Scene scene = SceneManager.GetSceneByName("Level" + (currentLevel + 1));
+
+        Scene scene = SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1);
+
+        Debug.Log((currentLevel + 1));
 
         if (scene.IsValid())
         {
